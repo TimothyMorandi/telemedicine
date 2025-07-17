@@ -1,0 +1,526 @@
+<?php
+// If you want to process registration, you can handle POST here (example only, not persistent)
+$registration_success = false;
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['telemedicine_register'])) {
+    $fullname = htmlspecialchars($_POST['fullname'] ?? '');
+    $email = htmlspecialchars($_POST['email'] ?? '');
+    $status = htmlspecialchars($_POST['status'] ?? '');
+    $registration_success = true;
+    // Here you would insert into DB or send an email, etc.
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HIV/AIDS Telemedicine Support Center</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+     
+        /* * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        } */
+        /* body {
+            background: linear-gradient(135deg, #f1f2f6 0%, #dfe4ea 100%);
+            color: var(--dark);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        } */
+        .dashboard-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .dashboard-title {
+            font-size: 32px;
+            color: var(--primary);
+            margin-bottom: 25px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        .dashboard-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+        .dashboard-subtitle {
+            text-align: center;
+            color: var(--gray);
+            max-width: 800px;
+            margin: 0 auto 40px;
+            font-size: 18px;
+            line-height: 1.7;
+        }
+        .section-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: var(--card-shadow);
+            padding: 32px 30px 30px 30px;
+            margin-bottom: 40px;
+        }
+        .section-title {
+            font-size: 24px;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 18px;
+        }
+        .grid-layout {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        .telemedicine-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 18px;
+            margin-bottom: 25px;
+        }
+        .feature-icon {
+            width: 52px;
+            height: 52px;
+            background: var(--accent);
+            color: var(--primary-dark);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+        .feature-details {
+            flex: 1;
+        }
+        .feature-title {
+            font-weight: 600;
+            font-size: 18px;
+            margin-bottom: 4px;
+        }
+        .feature-desc {
+            color: var(--gray);
+            font-size: 15px;
+        }
+        .btn-primary,
+        .btn-register {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            box-shadow: 0 4px 12px rgba(74, 105, 189, 0.4);
+            padding: 12px 24px;
+            border-radius: 10px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition);
+            font-size: 16px;
+            margin-top: 15px;
+        }
+        .btn-block {
+            width: 100%;
+            text-align: center;
+            justify-content: center;
+        }
+        .btn-primary:hover,
+        .btn-register:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(74, 105, 189, 0.5);
+        }
+        .footer {
+            text-align: center;
+            padding: 30px 0;
+            color: var(--gray);
+            font-size: 14px;
+            border-top: 1px solid var(--light-gray);
+            margin-top: 40px;
+        }
+        .footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+        .registration-section {
+            background: white;
+            border-radius: 16px;
+            box-shadow: var(--card-shadow);
+            padding: 40px 30px 30px 30px;
+            max-width: 700px;
+            margin: 0 auto 40px auto;
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+        .registration-section.active {
+            display: block;
+        }
+        .registration-title {
+            font-size: 24px;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 18px;
+            text-align: center;
+        }
+        .registration-desc {
+            color: var(--gray);
+            font-size: 16px;
+            margin-bottom: 28px;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            color: var(--dark);
+            font-weight: 500;
+            margin-bottom: 7px;
+            display: block;
+        }
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid var(--light-gray);
+            background: var(--light);
+            font-size: 16px;
+        }
+        .form-control:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+        .lessons-section {
+            background: white;
+            border-radius: 16px;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 40px;
+            padding: 32px 30px 30px 30px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .lessons-title {
+            font-size: 24px;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 18px;
+        }
+        .lessons-list {
+            list-style: none;
+            padding: 0;
+        }
+        .lesson-item {
+            padding: 16px 0;
+            border-bottom: 1px solid var(--light-gray);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .lesson-item:last-child {
+            border-bottom: none;
+        }
+        .lesson-icon {
+            color: var(--primary-dark);
+            font-size: 24px;
+        }
+        .lesson-details {
+            flex: 1;
+        }
+        .lesson-title {
+            font-weight: 600;
+            font-size: 18px;
+            margin-bottom: 4px;
+        }
+        .lesson-desc {
+            color: var(--gray);
+            font-size: 15px;
+        }
+        .resource-link {
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .section-card, .emergency-card {
+            margin-bottom: 40px;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(40px);}
+            to   { opacity: 1; transform: translateY(0);}
+        }
+        .emergency-card {
+            background:linear-gradient(135deg, #e55039, #eb2f06);
+            color:white;
+            text-align:center;
+        }
+        .emergency-icon {
+            font-size:48px;
+            margin-bottom:20px;
+        }
+        .emergency-title {
+            font-size:28px;
+            margin-bottom:15px;
+        }
+        .emergency-desc {
+            font-size:18px;
+            margin-bottom:25px;
+            max-width:600px;
+            margin-left:auto;
+            margin-right:auto;
+        }
+        .btn-emergency {
+            background:white;
+            color:#e55039;
+            font-weight:700;
+            font-size:18px;
+            padding:15px 30px;
+            border-radius:12px;
+            box-shadow:0 4px 15px rgba(0,0,0,0.2);
+        }
+        .btn-emergency:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+        }
+        @media (max-width: 768px) {
+            .lessons-section, .registration-section, .section-card {
+                padding: 18px 7px 18px 7px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <h1 class="dashboard-title">HIV/AIDS Telemedicine Support Center</h1>
+        <p class="dashboard-subtitle">
+            Access confidential telemedicine services, register for support, join video consultations, order refills, chat with counselors, and learn from VCT lessons—all in one platform for people living with HIV/AIDS.
+        </p>
+
+        <!-- Register Button -->
+        <div style="text-align:center;margin-bottom:32px;">
+            <button class="btn-register" id="showRegisterBtn" type="button">
+                <i class="fas fa-user-plus"></i> Register for Telemedicine Support
+            </button>
+        </div>
+
+        <!-- Registration Section (Initially Hidden) -->
+        <div class="registration-section<?php if ($registration_success) echo ' active'; ?>" id="registrationSection">
+            <div class="registration-title">Register for HIV/AIDS Telemedicine Support</div>
+            <div class="registration-desc">
+                Register to access online consultations, medication management, VCT lessons, and dedicated counseling. All data is confidential and secure.
+            </div>
+            <?php if ($registration_success): ?>
+                <div style="text-align:center;padding:30px 0;">
+                    <i class="fas fa-check-circle" style="color:var(--success);font-size:32px;"></i>
+                    <h3 style="margin-top:20px;color:var(--primary);font-size:22px;">Thank you for registering!</h3>
+                    <p style="color:var(--gray);margin-top:10px;">You will be contacted by our support team soon. Meanwhile, you can access all telemedicine and VCT services below.</p>
+                </div>
+            <?php else: ?>
+            <form id="hivRegistrationForm" method="POST" autocomplete="off">
+                <div class="form-group">
+                    <label for="fullname">Full Name</label>
+                    <input type="text" id="fullname" name="fullname" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="status">Status</label>
+                    <select id="status" name="status" class="form-control" required>
+                        <option value="">Select status</option>
+                        <option value="newly">Newly Diagnosed</option>
+                        <option value="living">Living with HIV</option>
+                        <option value="at-risk">At Risk/Want to Test</option>
+                        <option value="partner">Partner/Family Support</option>
+                    </select>
+                </div>
+                <button class="btn-primary" name="telemedicine_register" type="submit">
+                    <i class="fas fa-user-plus"></i> Register for Telemedicine
+                </button>
+            </form>
+            <?php endif; ?>
+        </div>
+
+        <!-- Telemedicine Features -->
+        <div class="section-card">
+            <div class="section-title">Telemedicine Services for HIV/AIDS Patients</div>
+            <div class="grid-layout">
+                <div class="telemedicine-feature">
+                    <div class="feature-icon"><i class="fas fa-video"></i></div>
+                    <div class="feature-details">
+                        <div class="feature-title">Virtual Doctor Consultation</div>
+                        <div class="feature-desc">Book and attend secure video appointments with HIV specialists and general practitioners from the comfort of your home.</div>
+                        <button class="btn-primary btn-block" onclick="alert('Redirecting to booking system...')">
+                            <i class="fas fa-calendar-plus"></i> Book Consultation
+                        </button>
+                    </div>
+                </div>
+                <div class="telemedicine-feature">
+                    <div class="feature-icon"><i class="fas fa-notes-medical"></i></div>
+                    <div class="feature-details">
+                        <div class="feature-title">Online Prescription Refills</div>
+                        <div class="feature-desc">Request ART refills and other medications online and get reminders for when it’s time to reorder.</div>
+                        <button class="btn-primary btn-block" onclick="alert('Redirecting to prescription refills...')">
+                            <i class="fas fa-prescription-bottle-alt"></i> Request Refill
+                        </button>
+                    </div>
+                </div>
+                <div class="telemedicine-feature">
+                    <div class="feature-icon"><i class="fas fa-comments"></i></div>
+                    <div class="feature-details">
+                        <div class="feature-title">Confidential Chat with Counselors</div>
+                        <div class="feature-desc">Connect instantly with professional counselors for emotional support, disclosure guidance, and mental well-being.</div>
+                        <button class="btn-primary btn-block" onclick="alert('Starting secure chat...')">
+                            <i class="fas fa-comment-dots"></i> Start Chat
+                        </button>
+                    </div>
+                </div>
+                <div class="telemedicine-feature">
+                    <div class="feature-icon"><i class="fas fa-vials"></i></div>
+                    <div class="feature-details">
+                        <div class="feature-title">Lab Results & Monitoring</div>
+                        <div class="feature-desc">View your latest CD4, viral load, and other lab results securely, and discuss results live with your doctor.</div>
+                        <button class="btn-primary btn-block" onclick="alert('Opening your lab results...')">
+                            <i class="fas fa-flask"></i> View Lab Results
+                        </button>
+                    </div>
+                </div>
+                <div class="telemedicine-feature">
+                    <div class="feature-icon"><i class="fas fa-users"></i></div>
+                    <div class="feature-details">
+                        <div class="feature-title">Join Online Support Groups</div>
+                        <div class="feature-desc">Participate in secure video or chat-based support group sessions with peers and trained facilitators.</div>
+                        <button class="btn-primary btn-block" onclick="alert('Listing support groups...')">
+                            <i class="fas fa-hands-helping"></i> Join Group
+                        </button>
+                    </div>
+                </div>
+                <div class="telemedicine-feature">
+                    <div class="feature-icon"><i class="fas fa-book-open"></i></div>
+                    <div class="feature-details">
+                        <div class="feature-title">VCT & HIV/AIDS Lessons</div>
+                        <div class="feature-desc">Access a library of VCT lessons and HIV/AIDS education materials to stay informed and empowered.</div>
+                        <button class="btn-primary btn-block" onclick="window.scrollTo({top:document.querySelector('.lessons-section').offsetTop-40,behavior:'smooth'})">
+                            <i class="fas fa-graduation-cap"></i> Go to Lessons
+                        </button>
+                    </div>
+                </div>
+                <div class="telemedicine-feature">
+                    <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                    <div class="feature-details">
+                        <div class="feature-title">My Privacy & Data</div>
+                        <div class="feature-desc">View and manage your consent preferences, privacy settings, and download your health data at any time.</div>
+                        <button class="btn-primary btn-block" onclick="alert('Privacy center coming soon!')">
+                            <i class="fas fa-user-shield"></i> Privacy Center
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lessons Section (VCT/Education) -->
+        <div class="lessons-section section-card">
+            <div class="lessons-title">VCT & HIV/AIDS Learning Center</div>
+            <ul class="lessons-list">
+                <li class="lesson-item">
+                    <i class="fas fa-microscope lesson-icon"></i>
+                    <div class="lesson-details">
+                        <div class="lesson-title">What is HIV/AIDS?</div>
+                        <div class="lesson-desc">Understand the basics of HIV and AIDS, transmission routes, and the science behind the virus.</div>
+                        <a href="#" class="resource-link">Read Lesson <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </li>
+                <li class="lesson-item">
+                    <i class="fas fa-user-shield lesson-icon"></i>
+                    <div class="lesson-details">
+                        <div class="lesson-title">Prevention & Protection</div>
+                        <div class="lesson-desc">Explore methods to protect yourself and others, including safe practices, PrEP, and more.</div>
+                        <a href="#" class="resource-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </li>
+                <li class="lesson-item">
+                    <i class="fas fa-vials lesson-icon"></i>
+                    <div class="lesson-details">
+                        <div class="lesson-title">Testing & Diagnosis (VCT)</div>
+                        <div class="lesson-desc">Learn about Voluntary Counseling & Testing (VCT), what to expect, and why testing is important.</div>
+                        <a href="#" class="resource-link">Start Lesson <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </li>
+                <li class="lesson-item">
+                    <i class="fas fa-pills lesson-icon"></i>
+                    <div class="lesson-details">
+                        <div class="lesson-title">Treatment & ART</div>
+                        <div class="lesson-desc">Get informed on ART (antiretroviral therapy), adherence, and managing side effects.</div>
+                        <a href="#" class="resource-link">Go to Lesson <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </li>
+                <li class="lesson-item">
+                    <i class="fas fa-hands-helping lesson-icon"></i>
+                    <div class="lesson-details">
+                        <div class="lesson-title">Living Well & Support</div>
+                        <div class="lesson-desc">Tips for mental health, nutrition, relationships, and finding support groups.</div>
+                        <a href="#" class="resource-link">Access Support <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Emergency Card -->
+        <div class="section-card emergency-card">
+            <div class="emergency-icon">
+                <i class="fas fa-phone-alt"></i>
+            </div>
+            <h2 class="emergency-title">24/7 Emergency Support</h2>
+            <p class="emergency-desc">
+                If you're experiencing a medical emergency, severe side effects, or need immediate support, our team is available 24/7.
+            </p>
+            <button class="btn btn-emergency" type="button">
+                <i class="fas fa-phone-alt"></i> Call Emergency Support
+            </button>
+        </div>
+        <div class="footer">
+            <p>© 2025 HealthCare+ HIV/AIDS Telemedicine Center. All rights reserved. | 
+            <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+            <p>Confidential support line: 1-800-HIV-CARE (1-800-448-2273)</p>
+        </div>
+    </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Show/hide registration form
+        var showRegisterBtn = document.getElementById('showRegisterBtn');
+        var registrationSection = document.getElementById('registrationSection');
+        var form = document.getElementById('hivRegistrationForm');
+        <?php if (!$registration_success): ?>
+        showRegisterBtn.addEventListener('click', function() {
+            registrationSection.classList.toggle('active');
+            registrationSection.scrollIntoView({behavior: 'smooth', block: 'center'});
+        });
+        if(form){
+            form.addEventListener('submit', function(e) {
+                // Let PHP handle the form submission, so don't preventDefault.
+                // The section will be shown after reload if registration_success is true.
+            });
+        }
+        <?php endif; ?>
+        // Emergency button effect
+        var emergencyBtn = document.querySelector('.btn-emergency');
+        if(emergencyBtn){
+            emergencyBtn.addEventListener('click', function() {
+                alert('Connecting you to emergency support... Please stay on the line.');
+            });
+        }
+    });
+    </script>
+</body>
+</html>

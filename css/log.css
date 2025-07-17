@@ -1,0 +1,251 @@
+/* Reset default margin and padding */
+html, body {
+    height: 100%; /* Ensure the body takes full height */
+    margin: 0; /* Remove default margin */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex; /* Use flexbox for centering */
+    flex-direction: column; /* Stack header, main, and footer vertically */
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+}
+
+header {
+    background-color: #4CAF50; /* Header background color */
+    color: white; /* Header text color */
+    padding: 10px; /* Padding around header */
+    text-align: center; /* Center text in header */
+    width: 100%; /* Full width header */
+    max-width: 600px; /* Limit maximum width for better readability */
+}
+
+main {
+    text-align: center; /* Center text inside main */
+    width: 60%; /* Ensure it takes full width for responsiveness */
+    max-width: 600px; /* Limit maximum width for better readability */
+}
+
+form {
+    margin-bottom: 20px;
+    background-color: #f9f9f9; /* Optional: Add background color for form */
+    padding: 20px; /* Add padding for form */
+    border-radius: 5px; /* Rounded corners for form */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for depth */
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input {
+    width: 100%; /* Full width input fields */
+    padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 30px;
+}
+
+input:focus {
+    outline: none; /* Remove default outline */
+    border: 2px solid #4CAF50; /* Add custom focus outline */
+}
+
+button {
+    background-color: #4CAF50;
+    border-radius: 10px;
+    color: white;
+    padding: 10px;
+}
+
+/* Button hover effect */
+button:hover {
+    background-color: #45a049; /* Darker shade on hover */
+}
+
+/* Footer styling (if needed) */
+/* footer {
+    border-radius: 30px;
+    background-color: #4CAF50; 
+    color: white; 
+    text-align: center; 
+    padding: 10px; 
+    width: 100%; 
+} */
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    main {
+        width: 90%; /* Make it wider on smaller screens */
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    input {
+        padding: 12px; /* Increase padding for better touch targets */
+        font-size: larger;
+        border-radius :5px;
+        
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+
+        
+        
+
+        
+        
+
+        
+        
+
+     
+        
+        
+
+        
+        
+
+        
+        
+
+     
+        
+        
+
+        
+        
+
+        
+        
+
+     
+        
+        
+
+        
+        
+
+        
+        
+
+     
+        
+        
+
+        
+        
+
+        
+        
+
+     
+        
+        
+
+        
+        
+
+        
+        
+
+     
+        
+        
+
+        
+        
+
+        
+        
+
+     
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+     
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+
+    
+}

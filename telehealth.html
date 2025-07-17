@@ -1,0 +1,337 @@
+<!-- activity_main.xml -->
+<!-- This XML file defines the layout for your Android registration form. -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <!-- Gradient Background -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/gradient_background" />
+
+    <!-- Main Card Container -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:padding="24dp"
+        android:background="@drawable/card_background"
+        android:elevation="8dp">
+
+        <!-- Header: Registration Title -->
+        <TextView
+            android:id="@+id/registrationTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Registration"
+            android:textColor="@android:color/white"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="32dp"
+            android:layout_marginTop="16dp" />
+
+        <!-- Name Input -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:background="@drawable/input_field_background"
+            android:layout_marginBottom="12dp">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_person"
+                android:tint="#808080"
+                android:layout_marginEnd="16dp" />
+
+            <EditText
+                android:id="@+id/etName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Name"
+                android:textColorHint="#CCCCCC"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:background="@android:color/transparent"
+                android:inputType="textPersonName"
+                android:importantForAutofill="no" />
+        </LinearLayout>
+
+        <!-- Phone Number Input -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:background="@drawable/input_field_background"
+            android:layout_marginBottom="12dp">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_phone"
+                android:tint="#808080"
+                android:layout_marginEnd="16dp" />
+
+            <EditText
+                android:id="@+id/etPhoneNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Phone number"
+                android:textColorHint="#CCCCCC"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:background="@android:color/transparent"
+                android:inputType="phone"
+                android:importantForAutofill="no" />
+        </LinearLayout>
+
+        <!-- Gmail Input -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:background="@drawable/input_field_background"
+            android:layout_marginBottom="12dp">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_email"
+                android:tint="#808080"
+                android:layout_marginEnd="16dp" />
+
+            <EditText
+                android:id="@+id/etGmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Gmail"
+                android:textColorHint="#CCCCCC"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:background="@android:color/transparent"
+                android:inputType="textEmailAddress"
+                android:importantForAutofill="no" />
+        </LinearLayout>
+
+        <!-- Password Input -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:background="@drawable/input_field_background"
+            android:layout_marginBottom="32dp">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_lock"
+                android:tint="#808080"
+                android:layout_marginEnd="16dp" />
+
+            <EditText
+                android:id="@+id/etPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Password"
+                android:textColorHint="#CCCCCC"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:background="@android:color/transparent"
+                android:inputType="textPassword"
+                android:importantForAutofill="no" />
+        </LinearLayout>
+
+        <!-- Register Button -->
+        <Button
+            android:id="@+id/btnRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Register"
+            android:textSize="18sp"
+            android:textColor="@android:color/white"
+            android:background="@drawable/button_register_background"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:layout_marginBottom="16dp"
+            android:stateListAnimator="@null"
+            android:elevation="4dp" />
+
+        <!-- Login Button -->
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Login"
+            android:textSize="18sp"
+            android:textColor="@android:color/white"
+            android:background="@drawable/button_login_background"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:stateListAnimator="@null"
+            android:elevation="4dp" />
+
+    </LinearLayout>
+
+</RelativeLayout>
+
+```java
+// MainActivity.java
+// This Java file is the main activity for your Android application.
+// It sets up the UI and includes placeholders for handling button clicks.
+
+package com.example.yourprojectname; // Replace with your actual package name
+
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+
+    private EditText etName, etPhoneNumber, etGmail, etPassword;
+    private Button btnRegister, btnLogin;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main); // Link to your XML layout file
+
+        // Initialize UI elements by finding them by their IDs
+        etName = findViewById(R.id.etName);
+        etPhoneNumber = findViewById(R.id.etPhoneNumber);
+        etGmail = findViewById(R.id.etGmail);
+        etPassword = findViewById(R.id.etPassword);
+        btnRegister = findViewById(R.id.btnRegister);
+        btnLogin = findViewById(R.id.btnLogin);
+
+        // Set up click listener for the Register button
+        btnRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Get text from input fields
+                String name = etName.getText().toString();
+                String phoneNumber = etPhoneNumber.getText().toString();
+                String gmail = etGmail.getText().toString();
+                String password = etPassword.getText().toString();
+
+                // --- Basic Input Validation (Client-side) ---
+                if (name.isEmpty() || phoneNumber.isEmpty() || gmail.isEmpty() || password.isEmpty()) {
+                    Toast.makeText(MainActivity.this, "Please fill in all fields.", Toast.LENGTH_SHORT).show();
+                    return; // Stop if any field is empty
+                }
+
+                // TODO: Add more robust validation (e.g., email format, phone number format, password strength)
+
+                // Display a toast message with registration info (for demonstration)
+                String message = "Register Clicked:\nName: " + name + "\nPhone: " + phoneNumber + "\nEmail: " + gmail;
+                Toast.makeText(MainActivity.this, message, Toast.LENGTH_LONG).show();
+
+                // TODO: Implement actual registration logic here:
+                // 1. Send data to your server (e.g., via HTTP POST request)
+                // 2. Handle server response (success/failure)
+                // 3. Navigate to another activity or show success message
+            }
+        });
+
+        // Set up click listener for the Login button
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO: Implement login logic here:
+                // This button typically navigates to a login screen or handles existing user login
+                Toast.makeText(MainActivity.this, "Login button clicked. Implement login logic here.", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+}
+```xml
+<!-- res/drawable/gradient_background.xml -->
+<!-- Defines the purple-to-pink gradient background for the entire activity -->
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <gradient
+        android:angle="90"
+        android:startColor="#8A2BE2" <!-- Violet (top-left color in the image) -->
+        android:endColor="#FF69B4"   <!-- Hot Pink (bottom-right color in the image) -->
+        android:type="linear" />
+</shape>
+```xml
+<!-- res/drawable/card_background.xml -->
+<!-- Defines the rounded corners and slight transparency for the main card container -->
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="[http://schemas.android.com/apk/res/android](http://schemas.android.com/apk/res/android)">
+    <solid android:color="#B3FFFFFF" /> <!-- White with 70% opacity -->
+    <corners android:radius="16dp" />
+</shape>
+```xml
+<!-- res/drawable/input_field_background.xml -->
+<!-- Defines the bottom border for the input fields -->
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:bottom="2dp">
+        <shape android:shape="rectangle">
+            <solid android:color="@android:color/transparent" />
+        </shape>
+    </item>
+    <item android:gravity="bottom">
+        <shape android:shape="rectangle">
+            <solid android:color="#CCCCCC" /> <!-- Light gray line at the bottom -->
+            <size android:height="1dp" />
+        </shape>
+    </item>
+</layer-list>
+```xml
+<!-- res/drawable/button_register_background.xml -->
+<!-- Defines the rounded corners and gradient for the Register button -->
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="[http://schemas.android.com/apk/res/android](http://schemas.android.com/apk/res/android)">
+    <corners android:radius="24dp" />
+    <gradient
+        android:angle="0"
+        android:startColor="#FF69B4" <!-- Hot Pink -->
+        android:endColor="#8A2BE2"   <!-- Violet -->
+        android:type="linear" />
+</shape>
+```xml
+<!-- res/drawable/button_login_background.xml -->
+<!-- Defines the rounded corners and gradient for the Login button -->
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <corners android:radius="24dp" />
+    <gradient
+        android:angle="0"
+        android:startColor="#8A2BE2" <!-- Violet -->
+        android:endColor="#FF69B4"   <!-- Hot Pink -->
+        android:type="linear" />
+</shape>

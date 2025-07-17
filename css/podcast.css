@@ -1,0 +1,1013 @@
+/* Base Styles */
+:root {
+    --primary-blue: #2563eb; /* Equivalent to Tailwind blue-600 */
+    --hover-blue: #1d4ed8;   /* Equivalent to Tailwind blue-700 */
+    --text-gray-800: #1f2937;
+    --text-gray-700: #374151;
+    --text-gray-600: #4b5563;
+    --text-gray-500: #6b7280;
+    --bg-gray-100: #f3f4f6;
+    --bg-gray-200: #e5e7eb;
+    --bg-gray-700: #374151;
+    --bg-gray-800: #1f2937;
+    --white: #ffffff;
+    --red-500: #ef4444;
+    --green-500: #22c55e;
+    --blue-400: #60a5fa; /* Used for emergency number */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text-gray-800);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    padding-top: 80px; /* Space for fixed header */
+    scroll-behavior: smooth;
+}
+
+.container {
+    max-width: 1280px; /* Similar to Tailwind's default 'container' */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem; /* px-6 equivalent */
+    padding-right: 1.5rem; /* px-6 equivalent */
+}
+
+/* Reusable Components */
+.btn-primary {
+    background-color: var(--primary-blue);
+    color: var(--white);
+    padding: 0.75rem 1.5rem; /* py-3 px-6 */
+    border-radius: 0.375rem; /* rounded-md */
+    transition: background-color 0.3s ease-in-out; /* transition duration-300 */
+    border: none;
+    cursor: pointer;
+    font-weight: 600; /* semi-bold */
+}
+
+.btn-primary:hover {
+    background-color: var(--hover-blue);
+}
+
+.section-title {
+    font-size: 2.25rem; /* text-4xl */
+    font-weight: 700; /* font-bold */
+    text-align: center;
+    margin-bottom: 3rem; /* mb-12 */
+}
+
+/* Header Section */
+.main-header {
+    background-color: var(--white);
+    box-shadow: var(--shadow-sm);
+    padding-top: 1rem; /* py-4 */
+    padding-bottom: 1rem; /* py-4 */
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 50;
+}
+
+.main-header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    height: 2.5rem; /* h-10 */
+    margin-right: 0.5rem; /* mr-2 */
+}
+@media (max-width: 767px) { /* md breakpoint */
+    .logo-img {
+        height: 2rem; /* h-8 */
+    }
+}
+
+.desktop-nav {
+    display: none; /* hidden by default, shown on lg */
+    align-items: center;
+    gap: 1.5rem; /* space-x-6 */
+    font-size: 0.875rem; /* text-sm */
+}
+
+.nav-link {
+    color: var(--text-gray-800);
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+.nav-link:hover {
+    color: var(--primary-blue);
+}
+
+.header-icons {
+    display: flex;
+    align-items: center;
+    gap: 1rem; /* space-x-4 */
+}
+
+.icon-button {
+    color: var(--text-gray-600);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: color 0.3s ease-in-out;
+}
+
+.icon-button:hover {
+    color: var(--primary-blue);
+}
+
+.icon-svg {
+    width: 1.5rem; /* w-6 */
+    height: 1.5rem; /* h-6 */
+}
+
+.mobile-menu-toggle {
+    display: block; /* always visible on mobile */
+}
+
+.mobile-nav {
+    display: none; /* hidden by default, shown by JS */
+    margin-top: 1rem; /* mt-4 */
+    background-color: var(--white);
+    border-radius: 0.375rem; /* rounded-md */
+    box-shadow: var(--shadow-lg);
+    padding-top: 0.5rem; /* py-2 */
+    padding-bottom: 0.5rem; /* py-2 */
+}
+
+.mobile-nav.show { /* Class added by JavaScript */
+    display: block;
+}
+
+.mobile-nav-link {
+    display: block;
+    padding: 0.5rem 1rem; /* px-4 py-2 */
+    font-size: 0.875rem; /* text-sm */
+    color: var(--text-gray-700);
+    text-decoration: none;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.mobile-nav-link:hover {
+    background-color: var(--bg-gray-100);
+}
+
+/* Hero Section */
+.hero-section {
+    position: relative;
+    height: 100vh; /* h-screen */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    text-align: center;
+}
+
+.hero-section-small {
+    height: 40vh; /* Shorter height for the events calendar hero */
+}
+
+.hero-section-podcast {
+    height: 70vh; /* Slightly taller for podcast page */
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0; /* top:0; right:0; bottom:0; left:0; */
+    background-color: black;
+    opacity: 0.3;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+}
+
+.hero-content h1 {
+    font-size: 2.25rem; /* text-4xl */
+    font-weight: 700; /* font-bold */
+    margin-bottom: 1rem; /* mb-4 */
+}
+
+.hero-content p {
+    font-size: 1.125rem; /* text-lg */
+}
+
+.hero-content-small h1 {
+    font-size: 2.5rem; /* Slightly smaller for the events calendar hero */
+}
+
+/* Get Primed Section (from previous page, kept for reference if needed) */
+.get-primed-section {
+    background-color: var(--bg-gray-100);
+    padding: 4rem 1.5rem; /* py-16 px-6 */
+}
+
+.get-primed-content {
+    display: flex;
+    flex-direction: column; /* flex-col by default */
+    align-items: center;
+    background-color: var(--white);
+    border-radius: 0.5rem; /* rounded-lg */
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+}
+
+.get-primed-image-container {
+    width: 100%; /* lg:w-1/2 */
+}
+
+.get-primed-image {
+    width: 100%;
+    height: 15.625rem; /* h-full object-cover, adjust height for mobile */
+    object-fit: cover;
+}
+
+.get-primed-text-content {
+    width: 100%; /* lg:w-1/2 */
+    padding: 2rem; /* p-8 */
+    text-align: center;
+}
+
+.get-primed-text-content h2 {
+    font-size: 1.875rem; /* text-3xl */
+    font-weight: 700; /* font-bold */
+    margin-bottom: 1rem; /* mb-4 */
+}
+
+.get-primed-text-content p {
+    color: var(--text-gray-700);
+    margin-bottom: 1.5rem; /* mb-6 */
+}
+
+/* Mediclinic Prime Description Section (from previous page, kept for reference if needed) */
+.description-section {
+    padding: 4rem 1.5rem; /* py-16 px-6 */
+    background-color: var(--white);
+}
+
+.description-container {
+    text-align: center;
+}
+
+.breadcrumb {
+    font-size: 0.875rem; /* text-sm */
+    color: var(--text-gray-500);
+    margin-bottom: 2rem; /* mb-8 */
+}
+
+.breadcrumb-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.breadcrumb-link:hover {
+    text-decoration: underline;
+}
+
+.breadcrumb-current {
+    font-weight: 600; /* font-semibold */
+}
+
+.description-content {
+    max-width: 48rem; /* max-w-3xl */
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+
+.description-content p {
+    color: var(--text-gray-700);
+    margin-bottom: 1rem; /* mb-4 or mb-8 */
+}
+
+.description-logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem; /* mb-8 */
+}
+
+.description-logo {
+    height: 3rem; /* h-12 */
+}
+
+.cookie-placeholder {
+    background-color: var(--bg-gray-200);
+    padding: 2rem; /* p-8 */
+    border-radius: 0.5rem; /* rounded-lg */
+    text-align: center;
+    color: var(--text-gray-600);
+}
+
+.cookie-placeholder p {
+    margin-bottom: 1rem; /* mb-4 */
+}
+
+.spinner {
+    width: 6rem; /* w-24 */
+    height: 6rem; /* h-24 */
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 9999px; /* rounded-full */
+    border: 4px solid var(--blue-400);
+    border-top-color: transparent;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Prime Benefits Section (from previous page, kept for reference if needed) */
+.benefits-section {
+    background-color: var(--bg-gray-100);
+    padding: 4rem 1.5rem; /* py-16 px-6 */
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* col-span-1 by default */
+    gap: 2rem; /* gap-8 */
+}
+
+.benefit-card {
+    background-color: var(--white);
+    border-radius: 0.5rem; /* rounded-lg */
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+}
+
+.benefit-card-image {
+    width: 100%;
+    height: 12rem; /* h-48 */
+    object-fit: cover;
+}
+
+.benefit-card-content {
+    padding: 1.5rem; /* p-6 */
+}
+
+.benefit-card-content h3 {
+    font-size: 1.25rem; /* text-xl */
+    font-weight: 600; /* font-semibold */
+    margin-bottom: 0.5rem; /* mb-2 */
+}
+
+.benefit-card-content p {
+    color: var(--text-gray-700);
+    font-size: 0.875rem; /* text-sm */
+}
+
+.progress-bars {
+    margin-top: 1rem; /* mt-4 */
+}
+
+.progress-label {
+    font-size: 0.75rem; /* text-xs */
+    color: var(--text-gray-500);
+    margin-bottom: 0.5rem;
+}
+
+.progress-bar-bg {
+    width: 100%;
+    background-color: var(--bg-gray-200);
+    border-radius: 9999px; /* rounded-full */
+    height: 0.625rem; /* h-2.5 */
+    margin-bottom: 0.5rem; /* mb-2 */
+}
+
+.progress-bar-fill {
+    height: 100%;
+    border-radius: 9999px; /* rounded-full */
+}
+
+.progress-bar-fill.red {
+    background-color: var(--red-500);
+}
+
+.progress-bar-fill.green {
+    background-color: var(--green-500);
+}
+
+/* Symptoms and About Section (from previous page, kept for reference if needed) */
+.symptoms-about-section {
+    background-color: var(--white);
+    padding: 4rem 1.5rem; /* py-16 px-6 */
+}
+
+.symptoms-about-container {
+    display: grid;
+    grid-template-columns: 1fr; /* col-span-1 by default */
+    gap: 3rem; /* gap-12 */
+    align-items: center;
+}
+
+.symptoms-about-image-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.symptoms-about-image {
+    width: 100%;
+    max-width: 24rem; /* max-w-sm */
+    border-radius: 0.5rem; /* rounded-lg */
+    box-shadow: var(--shadow-md);
+}
+
+.symptoms-about-text-content h3 {
+    font-size: 1.5rem; /* text-2xl */
+    font-weight: 700; /* font-bold */
+    margin-bottom: 1rem; /* mb-4 */
+}
+
+.symptoms-about-text-content p {
+    color: var(--text-gray-700);
+    margin-bottom: 1.5rem; /* mb-6 */
+}
+
+.symptoms-about-text-content h3:last-of-type { /* Adjust margin for FOLLOW US heading */
+    margin-top: 1.5rem;
+    font-size: 1.25rem; /* text-xl */
+    font-weight: 600; /* font-semibold */
+}
+
+.social-icons {
+    display: flex;
+    gap: 1rem; /* space-x-4 */
+}
+
+.social-icon-link {
+    color: var(--text-gray-600);
+    transition: color 0.3s ease-in-out;
+}
+
+.social-icon-link:hover {
+    color: var(--primary-blue);
+}
+
+.social-icon-svg {
+    width: 2rem; /* w-8 */
+    height: 2rem; /* h-8 */
+}
+
+/* Footer Section */
+.main-footer {
+    background-color: var(--bg-gray-800);
+    color: var(--white);
+    padding: 3rem 1.5rem; /* py-12 px-6 */
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* col-span-1 by default */
+    gap: 2rem; /* gap-8 */
+}
+
+.footer-heading {
+    font-size: 1.125rem; /* text-lg */
+    font-weight: 600; /* font-semibold */
+    margin-bottom: 1rem; /* mb-4 */
+}
+
+.emergency-number {
+    font-size: 2rem; /* text-3xl */
+    font-weight: 700; /* font-bold */
+    color: var(--blue-400);
+}
+
+.footer-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.footer-list li {
+    margin-bottom: 0.5rem; /* space-y-2 equivalent */
+}
+
+.footer-list.spaced-list { /* For sections with two headings */
+    margin-bottom: 1.5rem; /* mb-6 */
+}
+
+.footer-link {
+    color: inherit;
+    text-decoration: none;
+    font-size: 0.875rem; /* text-sm */
+}
+
+.footer-link:hover {
+    text-decoration: underline;
+}
+
+.footer-bottom-text {
+    text-align: center;
+    color: var(--text-gray-500);
+    font-size: 0.75rem; /* text-xs */
+    margin-top: 3rem; /* mt-12 */
+    padding-top: 2rem; /* pt-8 */
+    border-top: 1px solid var(--bg-gray-700); /* border-t border-gray-700 */
+}
+
+.footer-bottom-text p:last-of-type {
+    margin-top: 0.5rem; /* mt-2 */
+}
+
+.footer-bottom-link {
+    color: inherit;
+    text-decoration: none;
+}
+
+.footer-bottom-link:hover {
+    text-decoration: underline;
+}
+
+/* Support Button */
+.support-button-container {
+    position: fixed;
+    bottom: 1.5rem; /* bottom-6 */
+    right: 1.5rem; /* right-6 */
+    z-index: 40;
+}
+
+.support-button {
+    background-color: var(--primary-blue);
+    color: var(--white);
+    border-radius: 9999px; /* rounded-full */
+    padding: 1rem; /* p-4 */
+    box-shadow: var(--shadow-lg);
+    transition: background-color 0.3s ease-in-out;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /* space-x-2 */
+}
+
+.support-button:hover {
+    background-color: var(--hover-blue);
+}
+
+.support-button-text {
+    display: none; /* hidden by default */
+}
+
+
+/* --- Health Events Calendar Specific Styles (from previous page, kept for reference if needed) --- */
+.health-events-calendar-section {
+    background-color: var(--white);
+    padding: 4rem 1.5rem;
+}
+
+.tabs-container {
+    display: flex;
+    justify-content: flex-start; /* Align tabs to the left */
+    border-bottom: 2px solid var(--bg-gray-200); /* Bottom border for tabs */
+    margin-bottom: 2rem;
+    overflow-x: auto; /* Allow horizontal scrolling on small screens */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+}
+
+.tab-button {
+    background-color: transparent;
+    border: none;
+    padding: 0.75rem 1.25rem; /* py-3 px-5 */
+    font-size: 1rem; /* text-base */
+    font-weight: 500; /* medium */
+    color: var(--text-gray-600);
+    cursor: pointer;
+    transition: color 0.3s ease-in-out, border-bottom 0.3s ease-in-out;
+    white-space: nowrap; /* Prevent text wrapping */
+    border-bottom: 2px solid transparent; /* Default transparent border */
+}
+
+.tab-button:hover {
+    color: var(--primary-blue);
+}
+
+.tab-button.active {
+    color: var(--primary-blue);
+    border-bottom: 2px solid var(--primary-blue);
+    font-weight: 600; /* semi-bold */
+}
+
+
+.event-details-tab-content.hidden {
+    display: none;
+}
+
+.event-details-container {
+    background-color: #fcfceb; /* Light yellow background as per image */
+    border-radius: 0.5rem; /* rounded-lg */
+    padding: 2rem; /* p-8 */
+    box-shadow: var(--shadow-md);
+}
+
+.event-detail-item {
+    display: flex; /* Use flexbox for label and value alignment */
+    margin-bottom: 0.75rem; /* spacing between items */
+    font-size: 0.95rem; /* slightly larger than text-sm */
+}
+
+.event-detail-item:last-child {
+    margin-bottom: 0; /* No margin for the last item */
+}
+
+.detail-label {
+    font-weight: 600; /* semi-bold */
+    color: var(--text-gray-700);
+    min-width: 6rem; /* Give labels a consistent width */
+    margin-right: 0.5rem;
+}
+
+.detail-value {
+    color: var(--text-gray-800);
+    flex-grow: 1; /* Allow value to take remaining space */
+}
+
+.registration-link {
+    color: var(--primary-blue);
+    text-decoration: underline;
+}
+
+.registration-link:hover {
+    color: var(--hover-blue);
+}
+
+
+/* --- The Health Wrap Podcast Specific Styles --- */
+.podcast-intro-section {
+    background-color: var(--bg-gray-100);
+    padding: 4rem 1.5rem;
+}
+
+.podcast-intro-content {
+    text-align: center;
+    max-width: 60rem; /* Adjust max-width for content */
+}
+
+.podcast-intro-content .section-title {
+    font-size: 2.5rem; /* Larger title for this section */
+    margin-bottom: 1.5rem;
+}
+
+.podcast-description-text {
+    font-size: 1.125rem; /* text-lg */
+    color: var(--text-gray-700);
+    margin-bottom: 2rem; /* mb-8 */
+    max-width: 48rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.podcast-cta-buttons {
+    display: flex;
+    flex-direction: column; /* Stack buttons on mobile */
+    gap: 1rem; /* space between buttons */
+    justify-content: center;
+    align-items: center;
+}
+
+.podcast-cta-button {
+    background-color: var(--white);
+    border: 1px solid var(--bg-gray-200);
+    border-radius: 0.375rem; /* rounded-md */
+    padding: 0.75rem 1.5rem; /* py-3 px-6 */
+    color: var(--primary-blue);
+    font-weight: 500; /* medium */
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /* space-x-2 */
+    width: 100%; /* Full width on mobile */
+    max-width: 20rem; /* Max width for buttons */
+    justify-content: center;
+}
+
+.podcast-cta-button:hover {
+    background-color: var(--bg-gray-100);
+    border-color: var(--primary-blue);
+}
+
+.podcast-cta-icon {
+    width: 1.25rem; /* w-5 */
+    height: 1.25rem; /* h-5 */
+}
+
+.podcast-series-section {
+    background-color: var(--white);
+    padding: 4rem 1.5rem;
+}
+
+.podcast-tabs-container {
+    display: flex;
+    justify-content: flex-start;
+    border-bottom: 2px solid var(--bg-gray-200);
+    margin-bottom: 2rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap; /* Prevent tabs from wrapping */
+}
+
+.podcast-tab-button {
+    background-color: transparent;
+    border: none;
+    padding: 0.75rem 1.25rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-gray-600);
+    cursor: pointer;
+    transition: color 0.3s ease-in-out, border-bottom 0.3s ease-in-out;
+    border-bottom: 2px solid transparent;
+}
+
+.podcast-tab-button:hover {
+    color: var(--primary-blue);
+}
+
+.podcast-tab-button.active {
+    color: var(--primary-blue);
+    border-bottom: 2px solid var(--primary-blue);
+    font-weight: 600;
+}
+
+.podcast-tab-content.hidden {
+    display: none;
+}
+
+.podcast-series-image-container {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.podcast-series-image {
+    width: 100%;
+    max-width: 50rem; /* Max width for the image */
+    height: auto;
+    border-radius: 0.5rem; /* rounded-lg */
+    box-shadow: var(--shadow-md);
+    object-fit: cover;
+}
+
+.podcast-cookie-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Single column on mobile */
+    gap: 1.5rem; /* space-y-6 equivalent */
+}
+
+.podcast-cookie-card {
+    background-color: var(--bg-gray-100); /* Slightly different background for these cards */
+    border: 1px solid var(--bg-gray-200);
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    text-align: center;
+    color: var(--text-gray-700);
+    box-shadow: var(--shadow-sm);
+}
+
+.platforms-section {
+    background-color: var(--bg-gray-100);
+    padding: 4rem 1.5rem;
+    text-align: center;
+}
+
+.platform-buttons-container {
+    display: flex;
+    flex-direction: column; /* Stack on mobile */
+    gap: 1.5rem; /* space-y-6 */
+    justify-content: center;
+    align-items: center;
+}
+
+.platform-button {
+    background-color: var(--white);
+    border: 1px solid var(--bg-gray-200);
+    border-radius: 0.5rem; /* rounded-lg */
+    padding: 1rem; /* p-4 */
+    display: flex;
+    align-items: center;
+    gap: 1rem; /* space-x-4 */
+    text-decoration: none;
+    color: var(--text-gray-800);
+    font-weight: 600;
+    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    width: 100%;
+    max-width: 20rem; /* Max width for platform buttons */
+    justify-content: center;
+    box-shadow: var(--shadow-sm);
+}
+
+.platform-button:hover {
+    background-color: var(--bg-gray-100);
+    box-shadow: var(--shadow-md);
+}
+
+.platform-logo {
+    height: 1.5rem; /* Adjust size as needed */
+    width: auto;
+}
+
+.mediclinic-baby-podcast-section {
+    background-color: var(--white);
+    padding: 4rem 1.5rem;
+    text-align: center;
+}
+
+.mediclinic-baby-podcast-card {
+    background-color: #e0f2f7; /* Light blue background for this card */
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem; /* space-x-3 */
+    max-width: 30rem; /* Max width for the card */
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: var(--shadow-md);
+    color: var(--text-gray-800);
+    font-weight: 500;
+}
+
+.mediclinic-baby-podcast-card .info-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: var(--primary-blue);
+}
+
+
+/* Media Queries for Responsiveness */
+
+/* Large screens (lg: 1024px and up) */
+@media (min-width: 1024px) {
+    body {
+        padding-top: 80px; /* Consistent padding for header */
+    }
+
+    .container {
+        padding-left: 3rem; /* px-12 equivalent for larger screens */
+        padding-right: 3rem; /* px-12 equivalent for larger screens */
+    }
+
+    /* Header */
+    .desktop-nav {
+        display: flex; /* lg:flex */
+    }
+    .mobile-menu-toggle {
+        display: none; /* lg:hidden */
+    }
+    .mobile-nav {
+        display: none !important; /* Ensure mobile nav is hidden on large screens */
+    }
+    .logo-img {
+        height: 2.5rem; /* h-10 for desktop */
+    }
+
+    /* Hero */
+    .hero-content h1 {
+        font-size: 3.75rem; /* md:text-6xl */
+    }
+    .hero-content p {
+        font-size: 1.25rem; /* md:text-xl */
+    }
+    .hero-content-small h1 {
+        font-size: 3rem; /* Adjust for smaller hero section on desktop */
+    }
+    .hero-section-podcast {
+        height: 40vh; /* Shorter height for podcast hero on desktop */
+    }
+
+
+    /* Get Primed */
+    .get-primed-content {
+        flex-direction: row; /* lg:flex-row */
+    }
+    .get-primed-image-container,
+    .get-primed-text-content {
+        width: 50%; /* lg:w-1/2 */
+    }
+    .get-primed-text-content {
+        padding: 3rem; /* md:p-12 */
+        text-align: left; /* No specific Tailwind class, but often implied for content */
+    }
+
+    /* Prime Benefits */
+    .benefits-grid {
+        grid-template-columns: repeat(3, 1fr); /* lg:grid-cols-3 */
+    }
+
+    /* Symptoms and About */
+    .symptoms-about-container {
+        grid-template-columns: repeat(2, 1fr); /* lg:grid-cols-2 */
+    }
+    .symptoms-about-image-wrapper {
+        justify-content: flex-start; /* lg:justify-start */
+    }
+
+    /* Footer */
+    .footer-grid {
+        grid-template-columns: repeat(4, 1fr); /* lg:grid-cols-4 */
+    }
+
+    /* Support Button */
+    .support-button-text {
+        display: block; /* md:block */
+    }
+
+    /* Podcast Specific Media Queries */
+    .podcast-cta-buttons {
+        flex-direction: row; /* Buttons side-by-side on desktop */
+        gap: 1.5rem;
+    }
+    .podcast-cta-button {
+        width: auto; /* Auto width on desktop */
+    }
+
+    .podcast-cookie-grid {
+        grid-template-columns: repeat(2, 1fr); /* Two columns on desktop */
+    }
+
+    .platform-buttons-container {
+        flex-direction: row; /* Buttons side-by-side on desktop */
+        gap: 2rem;
+    }
+    .platform-button {
+        width: auto;
+    }
+}
+
+/* Medium screens (md: 768px and up) */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .container {
+        padding-left: 3rem; /* px-12 equivalent for medium screens */
+        padding-right: 3rem; /* px-12 equivalent for medium screens */
+    }
+
+    /* Hero */
+    .hero-content h1 {
+        font-size: 3.75rem; /* md:text-6xl */
+    }
+    .hero-content p {
+        font-size: 1.25rem; /* md:text-xl */
+    }
+
+    /* Get Primed */
+    .get-primed-text-content {
+        padding: 3rem; /* md:p-12 */
+    }
+
+    /* Prime Benefits */
+    .benefits-grid {
+        grid-template-columns: repeat(2, 1fr); /* md:grid-cols-2 */
+    }
+
+    /* Footer */
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr); /* md:grid-cols-2 */
+    }
+
+    /* Support Button */
+    .support-button-text {
+        display: block; /* md:block */
+    }
+
+    /* Podcast Specific Media Queries */
+    .podcast-cta-buttons {
+        flex-direction: row; /* Buttons side-by-side on medium screens */
+        gap: 1.5rem;
+    }
+    .podcast-cta-button {
+        width: auto;
+    }
+
+    .podcast-cookie-grid {
+        grid-template-columns: repeat(2, 1fr); /* Two columns on medium screens */
+    }
+
+    .platform-buttons-container {
+        flex-direction: row; /* Buttons side-by-side on medium screens */
+        gap: 2rem;
+    }
+    .platform-button {
+        width: auto;
+    }
+}

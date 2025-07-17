@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mediclinic Southern Africa Careers</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="css/careers.css">
+    <style>
+        /* ====== Header Styles ====== */
+.mediclinic-header {
+    background: #fff;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    transition: all 0.3s ease;
+  }
+  
+  .header-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    position: relative;
+  }
+  
+  .header-logo img {
+    height: 60px;
+    width: auto;
+    transition: all 0.3s;
+    padding: 10px 0;
+  }
+  
+  .main-nav .nav-menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .nav-item {
+    position: relative;
+    margin: 0 8px;
+  }
+  
+  .nav-link {
+    color: #003f72;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    padding: 20px 15px;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
+  }
+  
+  .nav-link:hover {
+    color: #0094d4;
+  }
+  
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 3px;
+    background: #0094d4;
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
+  }
+  
+  .nav-link:hover::after {
+    width: 100%;
+  }
+  
+  .nav-link i {
+    margin-left: 6px;
+    font-size: 12px;
+    transition: transform 0.3s;
+  }
+  
+  .nav-item:hover .nav-link i {
+    transform: rotate(180deg);
+  }
+  
+  .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #fff;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+    border-radius: 6px;
+    min-width: 240px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    z-index: 1000;
+    transform: translateY(10px);
+    padding: 8px 0;
+  }
+  
+  .nav-item:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  
+  .dropdown-item {
+    display: block;
+    padding: 12px 20px;
+    color: #444;
+    text-decoration: none;
+    transition: all 0.2s;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  
+  .dropdown-item:hover {
+    background: #f8fafc;
+    color: #0094d4;
+    padding-left: 25px;
+  }
+  
+  .user-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .user-actions a {
+    color: #003f72;
+    text-decoration: none;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    transition: all 0.3s;
+  }
+  
+  .user-actions a i {
+    margin-right: 8px;
+    font-size: 16px;
+  }
+  
+  .profile-link:hover,
+  .contact-link:hover {
+    color: #0094d4;
+  }
+  
+  .employee-login {
+    background: linear-gradient(135deg, #0094d4 0%, #0077b3 100%);
+    color: #fff !important;
+    padding: 10px 18px;
+    border-radius: 6px;
+    transition: all 0.3s;
+    box-shadow: 0 3px 10px rgba(0, 148, 212, 0.3);
+  }
+  
+  .employee-login:hover {
+    background: linear-gradient(135deg, #0077b3 0%, #005a8c 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 148, 212, 0.4);
+  }
+  
+  .mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #003f72;
+    cursor: pointer;
+    padding: 15px;
+    margin-left: 15px;
+  }
+  
+  /* ====== Footer Styles ====== */
+  .mediclinic-footer {
+    background: linear-gradient(135deg, #003f72 0%, #002a4d 100%);
+    color: #fff;
+    padding: 60px 0 30px;
+    position: relative;
+  }
+  
+  .mediclinic-footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, #0094d4 0%, #00b4ff 100%);
+  }
+  
+  .footer-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+  
+  .footer-columns {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+  }
+  
+  .footer-column h3 {
+    color: #fff;
+    font-size: 18px;
+    margin-bottom: 25px;
+    position: relative;
+    padding-bottom: 12px;
+    font-weight: 600;
+  }
+  
+  .footer-column h3::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 3px;
+    background: #0094d4;
+    border-radius: 3px;
+  }
+  
+  .footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .footer-column ul li {
+    margin-bottom: 12px;
+    position: relative;
+    padding-left: 15px;
+  }
+  
+  .footer-column ul li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: #0094d4;
+    font-size: 18px;
+    line-height: 1;
+  }
+  
+  .footer-column ul li a {
+    color: #d1e5f7;
+    text-decoration: none;
+    transition: all 0.3s;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+  
+  .footer-column ul li a:hover {
+    color: #fff;
+    transform: translateX(5px);
+  }
+  
+  .social-links {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+  }
+  
+  .social-links a {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.08);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    font-size: 16px;
+  }
+  
+  .social-links a:hover {
+    background: #0094d4;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .footer-links {
+    display: flex;
+    gap: 25px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .footer-links a {
+    color: #a8c6e8;
+    text-decoration: none;
+    font-size: 13px;
+    transition: all 0.3s;
+    position: relative;
+  }
+  
+  .footer-links a:hover {
+    color: #fff;
+  }
+  
+  .footer-links a:not(:last-child)::after {
+    content: '|';
+    position: absolute;
+    right: -15px;
+    color: rgba(255, 255, 255, 0.2);
+  }
+  
+  .copyright {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  
+  /* ====== Responsive Styles ====== */
+  @media (max-width: 1200px) {
+    .header-container {
+      padding: 0 30px;
+    }
+    
+    .nav-item {
+      margin: 0 5px;
+    }
+    
+    .nav-link {
+      padding: 20px 10px;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .main-nav {
+      display: none;
+    }
+    
+    .mobile-menu-toggle {
+      display: block;
+    }
+    
+    .header-logo img {
+      height: 50px;
+    }
+    
+    .footer-columns {
+      gap: 30px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .header-container {
+      padding: 0 20px;
+    }
+    
+    .footer-columns {
+      grid-template-columns: 1fr 1fr;
+    }
+    
+    .footer-column {
+      margin-bottom: 30px;
+    }
+    
+    .user-actions {
+      display: none;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .header-container {
+      padding: 0 15px;
+    }
+    
+    .header-logo img {
+      height: 45px;
+    }
+    
+    .footer-columns {
+      grid-template-columns: 1fr;
+    }
+    
+    .footer-links {
+      flex-direction: column;
+      gap: 10px;
+    }
+    
+    .footer-links a:not(:last-child)::after {
+      display: none;
+    }
+  }
+    </style>
+</head>
+<body>
+    <header id="header" class="mediclinic-header">
+        <div class="header-container">
+            <!-- Logo -->
+            <div class="header-logo">
+                <a href="https://careers.mediclinic.com/SouthernAfrica/?locale=en_GB">
+                    <img src="https://rmkcdn.successfactors.com/1bf0fd1f/8667090e-d169-487a-ac0a-f" alt="Mediclinic Southern Africa Careers" width="250">
+                </a>
+            </div>
+            
+            <!-- Main Navigation -->
+            <nav class="main-nav">
+                <ul class="nav-menu">
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link">About Us <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="/SouthernAfrica/content/Who-We-Are/?locale=en_GB" class="dropdown-item">Who We Are</a>
+                            <a href="/SouthernAfrica/content/Values-and-Ideal-Candidate/?locale=en_GB" class="dropdown-item">Values and Ideal Candidate</a>
+                            <a href="/SouthernAfrica/content/Employee-Development/?locale=en_GB" class="dropdown-item">Employee Development</a>
+                            <a href="/SouthernAfrica/content/Benefits/?locale=en_GB" class="dropdown-item">Benefits</a>
+                            <a href="/SouthernAfrica/content/Employee-Testimonials/?locale=en_GB" class="dropdown-item">Employee Testimonials</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link">Opportunities <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="https://careers.mediclinic.com/SouthernAfrica/go/Search-By-Keyword-MCSA/5071601/" class="dropdown-item">Search Jobs by Keyword</a>
+                            <a href="/SouthernAfrica/content/Search-Jobs-by-Location/?locale=en_GB" class="dropdown-item">Search Jobs by Location</a>
+                            <a href="https://careers.mediclinic.com/SouthernAfrica/lp/Talent%20Community%20-%20MCSA/0eaddd2bdc8ab9ec/?locale=en_GB" class="dropdown-item">Join our Talent Community</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link">Application Process <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="/SouthernAfrica/content/How-to-Apply/?locale=en_GB" class="dropdown-item">How to Apply</a>
+                            <a href="/SouthernAfrica/content/Job-Application-Tips/?locale=en_GB" class="dropdown-item">Job Application Tips</a>
+                            <a href="/SouthernAfrica/content/International-Applications/?locale=en_GB" class="dropdown-item">International Applications</a>
+                            <a href="/SouthernAfrica/content/FAQs/?locale=en_GB" class="dropdown-item">FAQs</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a href="https://careers.er24.co.za/?locale=en_GB" class="nav-link">ER24</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="https://careers.mediclinicdoctors.co.za/?locale=en_GB" class="nav-link">Doctor Opportunities</a>
+                    </li>
+                </ul>
+            </nav>
+            
+            <!-- User Actions -->
+            <div class="user-actions">
+                <a href="#" onclick="j2w.TC.handleViewProfileAction(event)" class="profile-link">
+                    <i class="fas fa-user-circle"></i> Manage My Profile
+                </a>
+                <a href="javascript:;" class="employee-login">
+                    <i class="fas fa-sign-in-alt"></i> Employee Login
+                </a>
+                <a href="mailto:askhr@mediclinic.co.za" class="contact-link">
+                    <i class="fas fa-envelope"></i> Contact
+                </a>
+            </div>
+            
+            <!-- Mobile Menu Toggle -->
+            <button class="mobile-menu-toggle">
+                <span class="hamburger"></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Your main content would go here -->
+        <div style="min-height: 80vh; padding: 20px;">
+            <h1>Welcome to Mediclinic Southern Africa Careers</h1>
+            <p>This is where the main content of the page would appear.</p>
+        </div>
+    </main>
+
+    <footer id="footer" class="mediclinic-footer">
+        <div class="footer-container">
+            <!-- Footer Columns -->
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/MediclinicSouthernAfrica" target="_blank" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://twitter.com/MediClinic" target="_blank" aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://www.instagram.com/mediclinicsouthernafrica/" target="_blank" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.youtube.com/c/mediclinic" target="_blank" aria-label="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/company/mediclinic/" target="_blank" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="https://careers.mediclinic.com">Mediclinic Group</a></li>
+                        <li><a href="https://careers.mediclinic.com/Hirslanden/?locale=en_GB">Hirslanden</a></li>
+                        <li><a href="https://careers.mediclinic.com/SouthernAfrica/?locale=en_GB">Southern Africa</a></li>
+                        <li><a href="https://careers.mediclinic.com/MiddleEast/?locale=en_GB">Middle East</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>About Us</h3>
+                    <ul>
+                        <li><a href="/SouthernAfrica/content/Who-We-Are/?locale=en_GB">Who We Are</a></li>
+                        <li><a href="/SouthernAfrica/content/Values-and-Ideal-Candidate/?locale=en_GB">Values and Ideal Candidate</a></li>
+                        <li><a href="/SouthernAfrica/content/Employee-Development/?locale=en_GB">Employee Development</a></li>
+                        <li><a href="/SouthernAfrica/content/Benefits/?locale=en_GB">Benefits</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Application Process</h3>
+                    <ul>
+                        <li><a href="/SouthernAfrica/content/Search-Jobs-by-Location/?locale=en_GB">Search Jobs by Location</a></li>
+                        <li><a href="/SouthernAfrica/go/Search-By-Keyword-MCSA/5071601/">Search Jobs by Keyword</a></li>
+                        <li><a href="/SouthernAfrica/content/How-to-Apply/?locale=en_GB">How to Apply</a></li>
+                        <li><a href="/SouthernAfrica/content/Job-Application-Tips/?locale=en_GB">Job Application Tips</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <div class="footer-links">
+                    <a href="https://www.mediclinic.co.za/en/corporate/privacy-statement.html" target="_blank">Privacy Policy</a>
+                    <a href="https://www.mediclinic.co.za/en/corporate/terms-of-use.html" target="_blank">Terms of Use</a>
+                    <a href="mailto:askhr@mediclinic.co.za">Contact Us</a>
+                </div>
+                <div class="copyright">
+                    <p>&copy; Mediclinic Southern Africa <script>document.write(new Date().getFullYear())</script>. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Basic mobile menu toggle functionality
+        document.querySelector('.mobile-menu-toggle').addEventListener('click', function() {
+            const nav = document.querySelector('.main-nav');
+            const userActions = document.querySelector('.user-actions');
+            
+            if (nav.style.display === 'block') {
+                nav.style.display = 'none';
+                userActions.style.display = 'none';
+            } else {
+                nav.style.display = 'block';
+                userActions.style.display = 'flex';
+            }
+        });
+        
+        // Handle dropdowns for mobile
+        if (window.innerWidth <= 768) {
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    if (this.parentElement.classList.contains('dropdown')) {
+                        e.preventDefault();
+                        const dropdown = this.nextElementSibling;
+                        if (dropdown.style.display === 'block') {
+                            dropdown.style.display = 'none';
+                        } else {
+                            document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                                menu.style.display = 'none';
+                            });
+                            dropdown.style.display = 'block';
+                        }
+                    }
+                });
+            });
+        }
+    </script>
+</body>
+</html>
